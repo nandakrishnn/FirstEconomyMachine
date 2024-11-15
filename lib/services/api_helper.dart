@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:firsteconomy/constants/api.dart';
 import 'package:firsteconomy/models/data_model.dart';
 import 'package:firsteconomy/services/status_codes.dart';
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 
  class ApiServices {

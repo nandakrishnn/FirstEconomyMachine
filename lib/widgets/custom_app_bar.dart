@@ -10,15 +10,15 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 91,
+      height: 85,
       decoration: BoxDecoration(
-        color: Color.fromARGB(30, 255, 255, 255),
+        color:AppColors.lightGreyColor,
         borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(25),
             bottomRight: Radius.circular(25)),
         boxShadow: [
           BoxShadow(
-            color: Color.fromARGB(58, 39, 37, 37).withOpacity(0.05),
+            color:const Color.fromARGB(58, 39, 37, 37).withOpacity(0.05),
             offset: const Offset(0, 0),
             blurRadius: 8,
             spreadRadius: 2,
@@ -52,7 +52,7 @@ class CustomAppBar extends StatelessWidget {
                  AppConstants.kwidth20,
               const Icon(
                 Icons.menu,
-                size: 32,
+                size: 28,
                 color: AppColors.whiteColor,
               )
             ],
