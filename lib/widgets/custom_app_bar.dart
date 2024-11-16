@@ -1,9 +1,13 @@
+import 'package:firsteconomy/animations/route_animations.dart';
 import 'package:firsteconomy/constants/colors.dart';
 import 'package:firsteconomy/constants/height_width.dart';
+import 'package:firsteconomy/views/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
+ final String?subtext;
   const CustomAppBar({
+    this.subtext,
     super.key,
   });
 
@@ -26,26 +30,42 @@ class CustomAppBar extends StatelessWidget {
         ],
       ),
       child: Padding(
-          padding: const EdgeInsets.all(6.0),
+          padding:  const EdgeInsets.all(6.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
                 children: [
-                  Image.asset(
-                    'assets/Group 1000005951.png',
-                    height: 50,
-                    width: 50,
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.of(context).push(createRoute(const  ProfilePage()));
+                    },
+                    child: Image.asset(
+                      'assets/Group 1000005951.png',
+                      height: 50,
+                      width: 50,
+                    ),
                   ),
                   AppConstants.kwidth10,
-                  const Text(
-                    'Hi,',
-                    style: TextStyle(color: AppColors.whiteColor),
+                  Column(
+                 
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                         AppConstants.kheight20,
+                      const Text(
+                        'Hi,',
+                        style: TextStyle(color: AppColors.whiteColor),
+                      ),
+                        Text(
+                        subtext??'',
+                        style: const TextStyle(color: AppColors.whiteColor,fontWeight: FontWeight.bold,fontSize: 14),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              AppConstants.kwidth10,
+              AppConstants.kwidth5,
               Image.asset(
                 'assets/appbarimage.png',
               ),
@@ -53,7 +73,7 @@ class CustomAppBar extends StatelessWidget {
               const Icon(
                 Icons.menu,
                 size: 28,
-                color: AppColors.whiteColor,
+                color: AppColors.pureWhite,
               )
             ],
           )),

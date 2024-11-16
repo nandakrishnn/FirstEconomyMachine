@@ -7,4 +7,7 @@ class AppColors{
   static const Color lighestGreyColor= Color.fromRGBO(222, 237, 255, 0.1);
   static const Color whiteColor=Color.fromARGB(255, 215, 206, 206);
     static const Color bottomNavColor=Color.fromARGB(255, 26, 25, 25);
+    static const Color pureWhite=Colors.white;
+    static const Color darkGreen=Color(0xFF07617D);
+      static const Color orangeColor=Color.fromARGB(255, 197, 143, 81);
 }
