@@ -13,7 +13,7 @@ class FooterContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .4,
+      height: MediaQuery.of(context).size.height * .44,
       width: MediaQuery.of(context).size.width,
       // color: AppColors.lighestGreyColor,
       child: Column(
