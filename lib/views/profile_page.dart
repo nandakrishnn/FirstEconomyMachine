@@ -1,3 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:firsteconomy/bottom_nav.dart';
+
 import 'package:firsteconomy/constants/colors.dart';
 import 'package:firsteconomy/constants/height_width.dart';
 import 'package:firsteconomy/views/loan_info.dart';
@@ -11,6 +14,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
         backgroundColor: AppColors.mainColor,
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(85),
@@ -27,7 +31,7 @@ class ProfilePage extends StatelessWidget {
                 cameraContainerColor: Colors.white,
               ),
               AppConstants.kheight15,
-              const Text(
+              const AutoSizeText(
                 'Ayush Khurana',
                 style: TextStyle(
                     color: AppColors.mainBlueColor,
@@ -35,7 +39,7 @@ class ProfilePage extends StatelessWidget {
                     fontSize: 25),
               ),
               AppConstants.kheight10,
-              const Text(
+              const AutoSizeText(
                 '+91 994021***3',
                 style: TextStyle(color: AppColors.whiteColor, fontSize: 16),
               ),
@@ -62,7 +66,7 @@ class ProfilePage extends StatelessWidget {
                         height: 30,
                         width: 30,
                       ),
-                      title: Text(
+                      title: AutoSizeText(
                         title[index],
                         style: const TextStyle(color: AppColors.pureWhite),
                       ),
@@ -73,6 +77,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
+               
       ),
     );
   }

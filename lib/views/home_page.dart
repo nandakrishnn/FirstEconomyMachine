@@ -1,10 +1,15 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firsteconomy/constants/colors.dart';
 import 'package:firsteconomy/constants/height_width.dart';
 import 'package:firsteconomy/services/api_helper.dart';
+import 'package:firsteconomy/viewmodels/home_banner_bloc/fetch_image_banner_bloc.dart';
 import 'package:firsteconomy/widgets/custom_grid_container.dart';
 import 'package:firsteconomy/widgets/dots_indicator.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:firsteconomy/widgets/error_banner.dart';
+import 'package:firsteconomy/widgets/invite_container.dart';
+import 'package:firsteconomy/widgets/shimmer_banner.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../widgets/custom_app_bar.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,45 +27,54 @@ class HomePage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                FutureBuilder(
-                    future: ApiServices().getBannerImages(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                            child: CupertinoActivityIndicator());
+                BlocProvider(
+                  create: (context) => FetchImageBannerBloc(ApiServices())
+                    ..add(FetchBannerData()),
+                  child:
+                      BlocConsumer<FetchImageBannerBloc, FetchImageBannerState>(
+                    listener: (context, state) {},
+                    builder: (context, state) {
+                      if (state is FetchImageBannerLoading) {
+                        return const ShimmerBanner();
                       }
-                      if (snapshot.hasError) {
-                        return Center(child: Text('Error: ${snapshot.error}'));
+                      if (state is FetchImageBannerFailure) {
+                        return const ErrorBanner();
                       }
-                      final bannerImages = snapshot.data;
-                      return SizedBox(
-                        height: MediaQuery.of(context).size.height * .20,
-                        child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: bannerImages?.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        .22,
-                                    width:
-                                        MediaQuery.of(context).size.width * .8,
-                                    decoration: BoxDecoration(
-                                        color: AppColors.whiteColor,
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                              bannerImages![index].bannerImage,
-                                            ),
-                                            fit: BoxFit.cover)),
+                      if (state is FetchImageBannerLoaded) {
+                        final bannerImages = state.data;
+                        return SizedBox(
+                          height: MediaQuery.of(context).size.height * .20,
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: bannerImages.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              .22,
+                                      width: MediaQuery.of(context).size.width *
+                                          .8,
+                                      decoration: BoxDecoration(
+                                          color: AppColors.whiteColor,
+                                          image: DecorationImage(
+                                              image: NetworkImage(
+                                                bannerImages[index].bannerImage,
+                                              ),
+                                              fit: BoxFit.cover)),
+                                    ),
                                   ),
-                                ),
-                              );
-                            }),
-                      );
-                    }),
+                                );
+                              }),
+                        );
+                      }
+                      return Container();
+                    },
+                  ),
+                ),
                 const CustomDotIndicator(),
                 AppConstants.kheight5,
                 const Divider(
@@ -74,7 +88,7 @@ class HomePage extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
+                      child: AutoSizeText(
                         'Services',
                         style: TextStyle(
                             color: AppColors.whiteColor,
@@ -143,53 +157,12 @@ class HomePage extends StatelessWidget {
                   thickness: .6,
                 ),
                 AppConstants.kheight10,
-                Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.lightGreyColor,
-                      borderRadius: BorderRadius.circular(10)),
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .19,
-                  child: Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Invite your friends',
-                              style: TextStyle(
-                                  color: AppColors.mainBlueColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13),
-                            ),
-                            AppConstants.kheight10,
-                            const Text(
-                              'Get upto 10000 coins when you friends sign up for\nCWC app',
-                              style: TextStyle(
-                                  color: AppColors.whiteColor, fontSize: 7),
-                            ),
-                            AppConstants.kheight15,
-                            Container(
-                              height: 30,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  color: AppColors.mainBlueColor,
-                                  borderRadius: BorderRadius.circular(6)),
-                              child: const Center(
-                                  child: Text(
-                                'Send Invite',
-                                style: TextStyle(
-                                    color: AppColors.whiteColor, fontSize: 10),
-                              )),
-                            )
-                          ],
-                        ),
-                        const Spacer(),
-                        Image.asset('assets/welcome.png'),
-                      ],
-                    ),
-                  ),
+                const InviteContainer(
+                  inviteHeaderl: 'Invite your friends',
+                  inviteSubtext:
+                      'Get upto 10000 coins when you friends sign up for\nCWC app',
+                  buttonText: 'Send Invite',
+                  imageurl: 'assets/welcome.png',
                 ),
                 AppConstants.kheight20,
                 const Divider(

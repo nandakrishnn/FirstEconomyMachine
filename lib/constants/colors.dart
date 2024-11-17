@@ -8,6 +8,6 @@ class AppColors{
   static const Color whiteColor=Color.fromARGB(255, 215, 206, 206);
     static const Color bottomNavColor=Color.fromARGB(255, 26, 25, 25);
     static const Color pureWhite=Colors.white;
-    static const Color darkGreen=Color(0xFF07617D);
+    static const Color darkGreen=Color.fromARGB(237, 5, 95, 86);
       static const Color orangeColor=Color.fromARGB(255, 197, 143, 81);
 }
