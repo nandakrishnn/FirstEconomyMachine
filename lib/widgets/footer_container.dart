@@ -13,7 +13,7 @@ class FooterContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .30,
+      height: MediaQuery.of(context).size.height * .38,
       width: MediaQuery.of(context).size.width,
       // color: AppColors.lighestGreyColor,
       child: Column(
@@ -43,42 +43,60 @@ class FooterContainer extends StatelessWidget {
           ),
           Container(
             color:AppColors.lighestGreyColor,
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Row(
+            child:  Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
                 children: [
-                  ImageTextContainer(
-                    size: AppConstants.kheight1,
-                    imgurl: 'assets/magbike.png',
-                    text: 'Browse your\npreferred\ntwo wheelers',
+                  const Row(
+                    children: [
+                      ImageTextContainer(
+                        size: AppConstants.kheight1,
+                        imgurl: 'assets/magbike.png',
+                        text: 'Browse your\npreferred\ntwo wheelers',
+                      ),
+                      AppConstants.kwidth8,
+                      SizedBox(
+                        height: 110,
+                        child: VerticalDivider(
+                          color: AppColors.whiteColor,
+                          thickness: .5,
+                        ),
+                      ),
+                      AppConstants.kwidth8,
+                      ImageTextContainer(
+                       
+                        imgurl: 'assets/sansearch.png',
+                        text: 'Create Custom\nLoan Plans\n ',
+                      ),
+                      AppConstants.kwidth8,
+                      SizedBox(
+                        height: 110,
+                        child: VerticalDivider(
+                          color: AppColors.whiteColor,
+                          thickness: .5,
+                        ),
+                      ),
+                      AppConstants.kwidth8,
+                      ImageTextContainer(
+                        imgurl: 'assets/timercloc.png',
+                        text: 'Quick Online\nApproval\n',
+                      ),
+                    ],
                   ),
-                  AppConstants.kwidth8,
-                  SizedBox(
-                    height: 110,
-                    child: VerticalDivider(
-                      color: AppColors.whiteColor,
-                      thickness: .5,
-                    ),
-                  ),
-                  AppConstants.kwidth8,
-                  ImageTextContainer(
-                   
-                    imgurl: 'assets/sansearch.png',
-                    text: 'Create Custom\nLoan Plans\n ',
-                  ),
-                  AppConstants.kwidth8,
-                  SizedBox(
-                    height: 110,
-                    child: VerticalDivider(
-                      color: AppColors.whiteColor,
-                      thickness: .5,
-                    ),
-                  ),
-                  AppConstants.kwidth8,
-                  ImageTextContainer(
-                    imgurl: 'assets/timercloc.png',
-                    text: 'Quick Online\nApproval\n',
-                  ),
+                  AppConstants.kheight20,
+                   Container(
+                  height: 40,
+                  width: 185,
+                  decoration: BoxDecoration(
+                      color: AppColors.mainBlueColor,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: const Center(
+                      child: Text(
+                    'Apply Now',
+                    style: TextStyle(
+                        color: AppColors.pureWhite, fontSize: 12,fontWeight: FontWeight.bold),
+                  )),
+                )
                 ],
               ),
             ),
