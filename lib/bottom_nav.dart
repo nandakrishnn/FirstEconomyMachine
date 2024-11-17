@@ -1,6 +1,5 @@
 import 'package:firsteconomy/constants/colors.dart';
 import 'package:firsteconomy/views/home_page.dart';
-import 'package:firsteconomy/views/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -19,7 +18,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
  
   final List<Widget> _pages = [
     const HomePage(),
- ProfilePage(), 
+
     Container(), 
     Container(),
   ];

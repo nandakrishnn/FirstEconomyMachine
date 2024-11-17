@@ -13,6 +13,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
         backgroundColor: AppColors.mainColor,
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(85),

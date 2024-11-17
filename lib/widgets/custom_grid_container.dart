@@ -42,11 +42,11 @@ class CustomContainerGrid extends StatelessWidget {
             AppConstants.kheight10,
             Text(
               text1,
-              style:const TextStyle(color: AppColors.whiteColor, fontSize: 10),
+              style:const TextStyle(color: AppColors.whiteColor, fontSize: 9),
             ),
             Text(
               text2??'',
-              style:const TextStyle(color: AppColors.whiteColor, fontSize: 10),
+              style:const TextStyle(color: AppColors.whiteColor, fontSize: 9),
             )
           ],
         ),

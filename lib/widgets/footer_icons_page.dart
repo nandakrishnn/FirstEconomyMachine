@@ -23,7 +23,7 @@ class ImageTextContainer extends StatelessWidget {
           text,
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
-          style: const TextStyle(color: AppColors.pureWhite, fontSize: 12),
+          style: const TextStyle(color: AppColors.pureWhite, fontSize: 11),
           textAlign: TextAlign.center,
         ),
       ],

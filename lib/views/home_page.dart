@@ -96,7 +96,7 @@ class HomePage extends StatelessWidget {
                 ),
                 AppConstants.kheight10,
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .27,
+                  height: MediaQuery.of(context).size.height * .285,
                   child: GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -104,8 +104,8 @@ class HomePage extends StatelessWidget {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               mainAxisSpacing: 20,
-                              crossAxisSpacing: 15,
-                              mainAxisExtent: 90,
+                              crossAxisSpacing: 10,
+                              mainAxisExtent: 100,
                               crossAxisCount: 4),
                       itemBuilder: (context, index) {
                         return CustomContainerGrid(

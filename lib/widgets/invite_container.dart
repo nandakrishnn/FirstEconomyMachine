@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firsteconomy/constants/colors.dart';
 import 'package:firsteconomy/constants/height_width.dart';
 import 'package:flutter/material.dart';
@@ -42,20 +41,20 @@ class InviteContainer extends StatelessWidget {
                 Text(
                   inviteSubtext,
                   style:
-                      const TextStyle(color: AppColors.whiteColor, fontSize: 7),
+                      const TextStyle(color: AppColors.pureWhite, fontSize: 7),
                 ),
                 AppConstants.kheight15,
                 Container(
-                  height: 30,
-                  width: 100,
+                  height: 40,
+                  width: 120,
                   decoration: BoxDecoration(
                       color: AppColors.mainBlueColor,
-                      borderRadius: BorderRadius.circular(6)),
+                      borderRadius: BorderRadius.circular(8)),
                   child: Center(
-                      child: AutoSizeText(
+                      child: Text(
                     buttonText,
                     style: const TextStyle(
-                        color: AppColors.whiteColor, fontSize: 10),
+                        color: AppColors.whiteColor, fontSize: 11),
                   )),
                 )
               ],

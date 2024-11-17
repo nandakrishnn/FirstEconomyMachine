@@ -13,7 +13,7 @@ class FooterContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .38,
+      height: MediaQuery.of(context).size.height * .4,
       width: MediaQuery.of(context).size.width,
       // color: AppColors.lighestGreyColor,
       child: Column(
@@ -41,13 +41,17 @@ class FooterContainer extends StatelessWidget {
               ),
             ],
           ),
+          
           Container(
             color:AppColors.lighestGreyColor,
             child:  Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(6.0),
               child: Column(
+             
                 children: [
+                  AppConstants.kheight10,
                   const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ImageTextContainer(
                         size: AppConstants.kheight1,
@@ -83,7 +87,7 @@ class FooterContainer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  AppConstants.kheight20,
+                  AppConstants.kheight30,
                    Container(
                   height: 40,
                   width: 185,
@@ -94,9 +98,10 @@ class FooterContainer extends StatelessWidget {
                       child: Text(
                     'Apply Now',
                     style: TextStyle(
-                        color: AppColors.pureWhite, fontSize: 12,fontWeight: FontWeight.bold),
+                        color: AppColors.pureWhite, fontSize: 11,fontWeight: FontWeight.bold),
                   )),
-                )
+                ),
+                 AppConstants.kheight20,
                 ],
               ),
             ),

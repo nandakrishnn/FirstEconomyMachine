@@ -116,7 +116,7 @@ class LoanInfo extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    left: MediaQuery.of(context).size.width * 0.345,
+                    left: MediaQuery.of(context).size.width * 0.36,
                     bottom: 0,
                     child: Row(
                       children: [
