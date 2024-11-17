@@ -1,30 +1,33 @@
 import 'package:firsteconomy/constants/colors.dart';
 import 'package:firsteconomy/views/home_page.dart';
-import 'package:firsteconomy/views/profile_page.dart'; // Import ProfilePage
+import 'package:firsteconomy/views/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BottomNavigation extends StatefulWidget {
+  const BottomNavigation({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _BottomNavigationState createState() => _BottomNavigationState();
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  // The selected index for the bottom navigation
+
   int _selectedIndex = 0;
 
  
   final List<Widget> _pages = [
     const HomePage(),
-
+ ProfilePage(), 
     Container(), 
     Container(),
   ];
 
-  // This function will handle bottom navigation tab changes
+
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index; // Update selected tab
+      _selectedIndex = index; 
     });
   }
 
@@ -32,7 +35,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.mainColor,
-      body: _pages[0], // Always show HomePage (even when on ProfilePage)
+      body: _pages[0], 
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),

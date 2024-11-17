@@ -3,9 +3,13 @@ import 'package:firsteconomy/constants/colors.dart';
 import 'package:firsteconomy/constants/height_width.dart';
 import 'package:firsteconomy/services/api_helper.dart';
 import 'package:firsteconomy/viewmodels/home_banner_bloc/fetch_image_banner_bloc.dart';
+import 'package:firsteconomy/widgets/custom_divider.dart';
 import 'package:firsteconomy/widgets/custom_grid_container.dart';
 import 'package:firsteconomy/widgets/dots_indicator.dart';
 import 'package:firsteconomy/widgets/error_banner.dart';
+import 'package:firsteconomy/widgets/footer_container.dart';
+import 'package:firsteconomy/widgets/gradient_grid_view.dart';
+import 'package:firsteconomy/widgets/grid_content.dart';
 import 'package:firsteconomy/widgets/invite_container.dart';
 import 'package:firsteconomy/widgets/shimmer_banner.dart';
 import 'package:flutter/material.dart';
@@ -77,12 +81,7 @@ class HomePage extends StatelessWidget {
                 ),
                 const CustomDotIndicator(),
                 AppConstants.kheight5,
-                const Divider(
-                  color: AppColors.whiteColor,
-                  indent: 13,
-                  endIndent: 13,
-                  thickness: .6,
-                ),
+                const CustomDivider(),
                 AppConstants.kheight5,
                 const Padding(
                   padding: EdgeInsets.only(left: 10),
@@ -110,52 +109,16 @@ class HomePage extends StatelessWidget {
                               crossAxisCount: 4),
                       itemBuilder: (context, index) {
                         return CustomContainerGrid(
-                            imageUrl: gridImages[index],
-                            text1: gridText1[index],
-                            text2: gridText2[index],
-                            gradient: index % 2 == 1
-                                ? const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color.fromARGB(255, 165, 158, 158),
-                                      Colors.black
-                                    ],
-                                  )
-                                : const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Colors.black,
-                                      Color.fromARGB(255, 165, 158, 158),
-                                    ],
-                                  ),
-                            gradient2: index % 2 == 1
-                                ? const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color.fromARGB(255, 30, 29, 29),
-                                      Color.fromARGB(255, 13, 13, 13),
-                                    ],
-                                  )
-                                : const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color.fromARGB(255, 13, 13, 13),
-                                      Color.fromARGB(255, 30, 29, 29),
-                                    ],
-                                  ));
+                          imageUrl: gridImages[index],
+                          text1: gridText1[index],
+                          text2: gridText2[index],
+                          gradient: getGradient(index),
+                          gradient2: getGradient2(index),
+                        );
                       }),
                 ),
                 AppConstants.kheight10,
-                const Divider(
-                  color: AppColors.whiteColor,
-                  indent: 13,
-                  endIndent: 13,
-                  thickness: .6,
-                ),
+                const CustomDivider(),
                 AppConstants.kheight10,
                 const InviteContainer(
                   inviteHeaderl: 'Invite your friends',
@@ -165,39 +128,10 @@ class HomePage extends StatelessWidget {
                   imageurl: 'assets/welcome.png',
                 ),
                 AppConstants.kheight20,
-                const Divider(
-                  color: AppColors.whiteColor,
-                  indent: 13,
-                  endIndent: 13,
-                  thickness: .6,
-                ),
+                const CustomDivider(),
                 AppConstants.kheight30,
-                Container(
-                  height: MediaQuery.of(context).size.height * .13,
-                  width: MediaQuery.of(context).size.width,
-                  color: AppColors.mainColor,
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.lightGreyColor,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        height: MediaQuery.of(context).size.height * .12,
-                      ),
-                      Positioned(
-                        top: -15,
-                        left: 110,
-                        child: Center(
-                          child: Image.asset(
-                            'assets/mainbike.png',
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                const FooterContainer(
+                  imageUrl: 'assets/mainbike.png',
                 )
               ],
             ),
@@ -207,35 +141,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-List<String> gridImages = [
-  'assets/Group 34504.png',
-  'assets/loanhand.png',
-  'assets/emi.png',
-  'assets/credit.png',
-  'assets/bike serviving.png',
-  'assets/enach.png',
-  'assets/quiz.png',
-  'assets/ev.png'
-];
-
-List<String> gridText1 = [
-  'Two Wheeler',
-  'Personal',
-  'Pay EMIs',
-  'Credit',
-  'Bike',
-  'eNach',
-  'Quiz &',
-  'EV Charging'
-];
-List<String> gridText2 = [
-  'Loan',
-  'Loan',
-  ' ',
-  'Score',
-  'Servicing',
-  ' ',
-  'Game',
-  'Location',
-];

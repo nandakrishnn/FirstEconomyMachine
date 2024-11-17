@@ -43,18 +43,18 @@ class DashedCircularBorderPainter extends CustomPainter {
    //for drawing the dashes in the screen
     for (int i = 0; i < dashCounter; i++) {
       final double dashStart = startRadian + (i * segmentAngle);
-      double dashAngleToDraw = dashAngle;
+      double dashtoDraw = dashAngle;
 
       if (i == 0) {
-        dashAngleToDraw = firstDash; 
+        dashtoDraw = firstDash; 
       } else if (i == dashCounter - 1) {
-        dashAngleToDraw = lastDash; 
+        dashtoDraw = lastDash; 
       }
 
       canvas.drawArc(
         Rect.fromCircle(center: center, radius: radius),
         dashStart,
-        dashAngleToDraw,
+        dashtoDraw,
         false,
         paint,
       );

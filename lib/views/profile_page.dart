@@ -1,11 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:firsteconomy/bottom_nav.dart';
-
 import 'package:firsteconomy/constants/colors.dart';
 import 'package:firsteconomy/constants/height_width.dart';
 import 'package:firsteconomy/views/loan_info.dart';
 import 'package:firsteconomy/widgets/choose_image_avatar.dart';
 import 'package:firsteconomy/widgets/custom_app_bar.dart';
+import 'package:firsteconomy/widgets/profile_content.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -14,7 +13,6 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
         backgroundColor: AppColors.mainColor,
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(85),
@@ -83,21 +81,4 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-List<String> icons = [
-  'assets/person.png',
-  'assets/searchru.png',
-  'assets/paisa.png',
-  'assets/bikeinfo.png',
-  'assets/vechiledoc.png',
-  'assets/register.png',
-  'assets/logout.png'
-];
-List<String> title = [
-  'Profile',
-  'Loan Info',
-  'Repayment',
-  'Bike Info',
-  'Vehicle Documents',
-  'Register Mandate',
-  'Logout'
-];
+

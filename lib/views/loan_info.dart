@@ -46,7 +46,7 @@ class LoanInfo extends StatelessWidget {
                   color: AppColors.darkGreen,
                 ),
               ),
-              AppConstants.kheight30,
+              AppConstants.kheight20,
               Stack(
                 clipBehavior: Clip.none,
                 children: [
